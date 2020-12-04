@@ -19,3 +19,5 @@ Route::post('customer-store','CustomerController@store');
 Route::get('customer-index','CustomerController@index')->name('customer.index');
 Route::get('customer-edit/{id}','CustomerController@tampilEdit');
 Route::post('customer-update/{id}' ,'CustomerController@update')->name('customer.update');
+Route::get('customer-delete/{id}','CustomerController@delete');
+

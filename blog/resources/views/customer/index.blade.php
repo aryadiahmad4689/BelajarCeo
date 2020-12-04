@@ -61,7 +61,11 @@
     <tr>
       <th>{{$item['name']}}</th>
       <td>{{$item['email']}}</td>
-      <td><a href="customer-edit/{{$item->id}}" class="btn btn-warning">Edit</a></td>
+      <td>
+        <a href="customer-edit/{{$item->id}}" class="btn btn-warning">Edit</a>
+        <a href="customer-delete/{{$item->id}}" class="btn btn-danger">Delete</a>
+
+    </td>
     </tr>
   
 
