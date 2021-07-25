@@ -17,7 +17,7 @@ Route::get('/', function () {
 Route::get('customer-create','CustomerController@tampilCreate');
 Route::post('customer-store','CustomerController@store');
 Route::get('customer-index','CustomerController@index')->name('customer.index');
-Route::get('customer-edit/{id}','CustomerController@tampilEdit');
+Route::get('customer-edit/{id}','CustomerController@tampilEdit')->name('customer.edit');
 Route::post('customer-update/{id}' ,'CustomerController@update')->name('customer.update');
-Route::get('customer-delete/{id}','CustomerController@delete');
+Route::get('customer-delete/{id}','CustomerController@delete')->name('customer.delete');
 
