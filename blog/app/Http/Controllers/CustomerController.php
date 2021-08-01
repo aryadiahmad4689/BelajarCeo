@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Customer;
+use App\Http\Requests\CustomerStoreRequest;
 
 class CustomerController extends Controller
 {
@@ -21,8 +22,14 @@ class CustomerController extends Controller
         return view('customer.create');
     }
 
-    public function store(Request $request)
+    public function store(CustomerStoreRequest $request)
     {
+        $request->validate(
+            [
+                'nama' => "required",
+                'email' => 'required|email'
+            ]
+        );
         $customer = new Customer;
         $customer->name = $request->nama;
         $customer->email = $request->email;
