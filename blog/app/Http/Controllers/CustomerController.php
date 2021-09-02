@@ -24,12 +24,6 @@ class CustomerController extends Controller
 
     public function store(CustomerStoreRequest $request)
     {
-        $request->validate(
-            [
-                'nama' => "required",
-                'email' => 'required|email'
-            ]
-        );
         $customer = new Customer;
         $customer->name = $request->nama;
         $customer->email = $request->email;

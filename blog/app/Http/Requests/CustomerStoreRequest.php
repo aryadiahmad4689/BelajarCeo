@@ -13,7 +13,7 @@ class CustomerStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class CustomerStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            "name" => "required",
+            "nama" => "required",
             "email" => "required|email"
         ];
     }
@@ -32,7 +32,7 @@ class CustomerStoreRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'A nama is required',
+            'nama.required' => 'A nama is required',
             'email.required'  => 'A email is required',
             'email.email' => "must format email"
         ];

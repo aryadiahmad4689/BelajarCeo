@@ -3,10 +3,7 @@
 namespace Tests\Feature;
 
 use App\Customer;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\CreatesApplication;
 use Tests\TestCase;
 
 class CustomerTest extends TestCase
@@ -47,11 +44,23 @@ class CustomerTest extends TestCase
      * should nama
      * @var string nama
      */
-    public function test_create_insert_parameter_wrong()
+    public function test_create_insert_parameter_wrong_name()
     {
         $data =[
             'name' => "j",
             'email' => "ariadi.ahmadd@gmail.com"
+        ];
+        // $this->withoutExceptionHandling();
+
+        $response = $this->post('customer-store/',$data);
+        $response->assertStatus(500);
+    }
+
+    public function test_create_insert_parameter_wrong_email()
+    {
+        $data =[
+            'nama' => "j",
+            'emaill' => "ariadi.ahmadd@gmail.com"
         ];
         // $this->withoutExceptionHandling();
 
@@ -108,5 +117,21 @@ class CustomerTest extends TestCase
 
         $response->assertStatus(302);
     }
+
+    public function test_required_name()
+    {
+        $data =[
+            'nama' => null,
+            'email' => null
+        ];
+        // $this->withoutExceptionHandling();
+
+        $response = $this->post('customer-store/',$data);
+        $response->assertSessionHasErrors();
+
+    }
+
+
+
 
 }
